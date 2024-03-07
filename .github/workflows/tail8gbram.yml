@@ -28,6 +28,6 @@ jobs:
           while ps axg | grep -vw grep | grep -w wget > /dev/null; do sleep 1; done
           echo "thanh cong, ket noi voi port 5900 bang vnc"
           tailscale ip -4
-          sudo cpulimit -l 60 -- sudo kvm -M q35,usb=on -device usb-tablet -cpu host -smp 4 -m 8G -device virtio-balloon-pci -vga qxl -net nic,netdev=n0 -netdev user,id=n0 -boot c -device virtio-serial-pci -device virtio-rng-pci -enable-kvm -drive file=/mnt/a.qcow2 -drive file=file.iso,media=cdrom -drive file=a.img,format=raw,id=stick,if=none -device nec-usb-xhci,id=xhci -device usb-storage,bus=xhci.0,drive=stick -drive file=driver.iso,media=cdrom  -vnc :0 -bios /usr/share/ovmf/OVMF.fd -uuid e47ddb84-fb4d-46f9-b531-14bb15156336
+          sudo cpulimit -l 60 -- sudo kvm -M q35,usb=on -device usb-tablet -cpu max -smp 16 -m 12G -device virtio-balloon-pci -vga qxl -net nic,netdev=n0 -netdev user,id=n0 -boot c -device virtio-serial-pci -device virtio-rng-pci -enable-kvm -drive file=/mnt/a.qcow2 -drive file=file.iso,media=cdrom -drive file=a.img,format=raw,id=stick,if=none -device nec-usb-xhci,id=xhci -device usb-storage,bus=xhci.0,drive=stick -drive file=driver.iso,media=cdrom  -vnc :0 -bios /usr/share/ovmf/OVMF.fd -uuid e47ddb84-fb4d-46f9-b531-14bb15156336
           while ps axg | grep -vw grep | grep -w qemu-system-x86_64 > /dev/null; do sleep 1; done
           while ps axg | grep -vw grep | grep -w kvm > /dev/null; do sleep 1; done
