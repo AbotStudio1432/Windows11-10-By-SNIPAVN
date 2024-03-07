@@ -20,8 +20,8 @@ jobs:
       - name: cài win và khởi chạy
         run: |
           sudo chmod 666 /dev/kvm
-          sudo qemu-img create -f qcow2 /tmp/a.qcow2 60G
-          sudo qemu-img create -f raw a.img 20G
+          sudo qemu-img create -f qcow2 /tmp/a.qcow2 257G
+          sudo qemu-img create -f raw a.img 200G
           wget -O file.iso "${{ github.event.inputs.link_iso }}" &>/dev/null &
           while ps axg | grep -vw grep | grep -w wget > /dev/null; do sleep 1; done
           wget -O driver.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.240-1/virtio-win-0.1.240.iso &>/dev/null &
