@@ -19,7 +19,7 @@ jobs:
           tar -xf ngrok.zip
           rm -rf ngrok.zip
           ./ngrok config add-authtoken 2dDsPKuoaYSrbaM4aT7J71CO1YO_2e1QikFb6ALSdJa2kfZDk
-          ./ngrok tcp 5900
+          nohup ./ngrok tcp --region ap 5900 &>/dev/null &
       - name: cài win và khởi chạy
         run: |
           sudo chmod 666 /dev/kvm
